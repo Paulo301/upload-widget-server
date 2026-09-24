@@ -1,10 +1,10 @@
-import { randomUUID } from 'node:crypto'
+import { randomUUIDv7 } from 'node:crypto'
 import { pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const uploads = pgTable('uploads', {
   id: text('id')
     .primaryKey()
-    .$defaultFn(() => randomUUID()),
+    .$defaultFn(() => randomUUIDv7()),
   name: text('name').notNull(),
   remoteKey: text('remote_key').notNull().unique(),
   remoteUrl: text('remote_url').notNull(),
